@@ -1,23 +1,18 @@
 import { useState, useEffect } from "react";
-
+import bannerBackgroundImg1 from "../assets//heroSlides-Image/slider1.jpg"
+import bannerBackgroundImg2 from "../assets//heroSlides-Image/slider2.jpg"
 const slides = [
   {
     id: 1,
-    title: "Modern Web Development",
-    desc: "Build fast websites with React",
-    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+    title: "Summer Offer 2020 Collection",
+    desc: "___Sale Off 20%",
+    img: bannerBackgroundImg1
   },
   {
     id: 2,
-    title: "React + Tailwind",
-    desc: "Create beautiful UI easily",
-    img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-  },
-  {
-    id: 3,
-    title: "Frontend Engineering",
-    desc: "Make responsive web apps",
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+    title: "Summer Offer 2020 Collection",
+    desc: "___Sale Off 40%",
+    img: bannerBackgroundImg2
   }
 ];
 
@@ -34,50 +29,72 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden">
+    <div className="md:px-6 md:pt-4">
+  <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden">
 
-      {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`absolute w-full h-full transition-opacity duration-700 ${
-            index === current ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <img
-            src={slide.img}
-            className="w-full h-full object-cover"
-            alt=""
-          />
+    {slides.map((slide, index) => (
+      <div
+        key={slide.id}
+        style={{ backgroundImage: `url(${slide.img})` }}
+        className={`
+          absolute w-[120%] md:w-full h-full 
+          bg-cover bg-center md:bg-left bg-no-repeat
+          aspect-[12/3] md:aspect-[16/9]
+          transition-opacity duration-700
+          ${index === current ? "opacity-100 z-10" : "opacity-0 z-0"}
+        `}
 
-          <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center text-white px-4">
-            
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
-              {slide.title}
-            </h1>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center md:items-end text-center md:text-right px-6 md:pr-20 text-white">
+          
+          {/* Description */}
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-[700px] mb-2">
+            {slide.desc}
+          </p>
 
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-[700px]">
-              {slide.desc}
-            </p>
+          {/* Title */}
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-[600px]">
+            {slide.title}
+          </h1>
 
-          </div>
+          {/* Button */}
+          <button className="bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200 transition">
+            Shop Now
+          </button>
+
         </div>
+      </div>
+    ))}
+
+    {/* Navigation Buttons */}
+    <button
+      onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
+      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 px-4 py-2 rounded text-black text-3xl z-20 transition"
+    >
+      ❮
+    </button>
+
+    <button
+      onClick={() => setCurrent((current + 1) % slides.length)}
+      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 px-4 py-2 rounded text-black text-3xl z-20 transition"
+    >
+      ❯
+    </button>
+
+    {/* Dots Navigation */}
+    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+      {slides.map((_, idx) => (
+        <span
+          key={idx}
+          onClick={() => setCurrent(idx)}
+          className={`w-3 h-3 rounded-full cursor-pointer ${
+            idx === current ? "bg-white" : "bg-white/50"
+          } transition`}
+        ></span>
       ))}
-
-      {/* Buttons */}
-      <button
-        onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 px-3 py-2 rounded text-white"
-      >
-        ❮
-      </button>
-
-      <button
-        onClick={() => setCurrent((current + 1) % slides.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 px-3 py-2 rounded text-white"
-      >
-        ❯
-      </button>
-
     </div>
+
+  </div>
+</div>
   );
 }
