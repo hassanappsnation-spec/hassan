@@ -46,7 +46,7 @@ export default function HeroSlider() {
       >
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center md:items-end text-center md:text-right px-6 md:pr-20 text-white">
+        <div className="absolute inset-0  flex flex-col justify-center items-center md:items-end text-center md:text-right px-6 md:pr-20 text-black">
           
           {/* Description */}
           <p className="text-sm sm:text-base md:text-lg wow lg:text-xl max-w-[700px] mb-2">

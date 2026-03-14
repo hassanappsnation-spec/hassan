@@ -1,10 +1,12 @@
 import React from 'react'
 import HeroSlider from '../components/HeroSlider'
+import CatagoryThembnails from '../components/CatagoryThembnails'
 
 const Home = () => {
   return (
-    <div>
+    <div className='mt-22'>
       <HeroSlider/>
+      <CatagoryThembnails/>
     </div>
   )
 }
