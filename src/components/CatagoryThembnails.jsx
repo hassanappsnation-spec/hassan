@@ -14,7 +14,6 @@ const CatagoryThembnails = () => {
   }}>
             <h3>Watchs</h3>
             <p>Starting at <span>$99.00</span></p>
-            <p>Starting at <span>$99.00</span></p>
         </div> 
         <div className=""></div>
         <div className=""></div>
