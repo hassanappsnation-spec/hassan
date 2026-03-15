@@ -5,7 +5,7 @@ import catagoryThtmtnailBg3 from "../assets/catagoryThamnails/banner-3.jpg"
 const CatagoryThembnails = () => {
   return (
     <>
-    <div className="">
+    <div className="grid grid-cols-3">
         <div className=""   style={{ 
     backgroundImage: `url(${catagoryThtmtnailBg1})`,
     backgroundSize: "cover",
