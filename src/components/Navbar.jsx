@@ -59,7 +59,7 @@ const Navbar = () => {
 
           <div className={`flex md:hidden justify-between py-8 px-15 fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-white shadow ${show ? "translate-y-0" : "-translate-y-20"
             }`}>
-            <div className=""><Link to='/'>FLONE.</Link></div>
+            <Link to='/'><div className="">FLONE.</div></Link>
           
             <div className="">
                 <ul className="flex gap-5"  >
