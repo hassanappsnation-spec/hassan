@@ -9,6 +9,8 @@ import Profile from './pages/Profile'
 import WishList from './pages/WishList'
 import Cart from './pages/Cart'
 import CheckOut from './pages/CheckOut'
+import ProductDetail from './components/ProductDetail'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -16,6 +18,7 @@ const App = () => {
       <Navbar/>
      <Routes>
       <Route path='/' element={<Home/>}/>
+      <Route path="/product/:id" element={<ProductDetail  />} />
       <Route path='/shop' element={<Shop/>}/>
       <Route path='/collection' element={<Collection/>}/>
       <Route path='/contact' element={<Contact/>}/>
@@ -24,6 +27,8 @@ const App = () => {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/checkout' element={<CheckOut/>}/>
      </Routes>
+      <Footer/>
+
     </div>
   )
 }

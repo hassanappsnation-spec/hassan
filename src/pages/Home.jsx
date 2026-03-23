@@ -2,6 +2,7 @@ import React from 'react'
 import HeroSlider from '../components/HeroSlider'
 import CatagoryThembnails from '../components/CatagoryThembnails'
 import ProductsCards from '../components/ProductsCards'
+import Footer from '../components/Footer'
 
 const Home = () => {
   return (
