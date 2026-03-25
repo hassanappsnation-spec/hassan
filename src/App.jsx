@@ -11,11 +11,13 @@ import Cart from './pages/Cart'
 import CheckOut from './pages/CheckOut'
 import ProductDetail from './components/ProductDetail'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   return (
     <div>
       <Navbar/>
+      <ScrollToTop/>
      <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path="/product/:id" element={<ProductDetail  />} />
