@@ -53,7 +53,7 @@ const Footer = () => {
             Get email updates about our latest shop and special offers.
           </p>
 
-          <div className="flex border-b border-gray-400">
+          <div className="flex border-b border-gray-400 w-2/1 lg:w-full">
             <input
               type="email"
               placeholder="Enter your email"
