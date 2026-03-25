@@ -54,7 +54,7 @@ const ProductsCards = () => {
                   </Link>
 
                   {/* Cart */}
-                  <button onClick={() => dispatch(addToCart(product))} className="bg-white/80 backdrop-blur-sm p-3 rounded-full hover:bg-white transition">
+                  <button onClick={() => dispatch(addToCart(product))} className="bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white transition">
                     <FaShoppingCart size={18} />
                   </button>
 
