@@ -3,8 +3,8 @@
  export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const res1 = await fetch("https://dummyjson.com/products");
-    const data1 = await res1.json();
+    // const res1 = await fetch("https://dummyjson.com/products");
+    // const data1 = await res1.json();
 
     const res2 = await fetch("https://fakestoreapi.com/products");
     const data2 = await res2.json();
