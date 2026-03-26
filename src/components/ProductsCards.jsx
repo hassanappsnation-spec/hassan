@@ -44,7 +44,7 @@ const ProductsCards = () => {
                 <div className="absolute inset-0 flex items-center justify-center gap-4
                   opacity-0 group-hover:opacity-100
                   backdrop-blur-md bg-white/20
-                  transition-all duration-300">
+                  transition-all duration-250">
 
                   {/* View */}
                   <Link to={`/product/${product.id}`}>
@@ -54,7 +54,7 @@ const ProductsCards = () => {
                   </Link>
 
                   {/* Cart */}
-                  <button onClick={() => dispatch(addToCart(product))} className="bg-white/80 backdrop-blur-sm p-3 rounded-full hover:bg-white transition">
+                  <button onClick={() => dispatch(addToCart(product))} className="bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white transition">
                     <FaShoppingCart size={18} />
                   </button>
 
