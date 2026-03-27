@@ -1,3 +1,4 @@
+// redux/features/cartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -9,17 +10,19 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
+            const { product, quantity } = action.payload;
             const existingItem = state.cartItem.find(
-                (item) => item.id === action.payload.id
+                (item) => item.id === product.id
             );
 
             if (existingItem) {
-                existingItem.quantity += 1;
+                existingItem.quantity += quantity;
             } else {
-                state.cartItem.push({ ...action.payload, quantity: 1 });
+                state.cartItem.push({ ...product, quantity });
             }
         }
     }
 })
+
 export const { addToCart } = cartSlice.actions;
 export default cartSlice.reducer;

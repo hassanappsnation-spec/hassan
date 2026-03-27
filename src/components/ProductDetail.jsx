@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProductsCards from './ProductsCards'
 import { BiArrowFromLeft, BiArrowFromRight, BiStar } from "react-icons/bi";
 import ReviewSlider from "./ReviewSlider";
 import Breadcrumb from "./Breadcrumb";
+import { addToCart } from "../redux/features/cartSlice";
 
 function ProductDetail() {
+
+  let [qty,setQty] = useState(0)
+  const cartItems = useSelector((state) => state.cart.cartItem);
+
+const dispatch = useDispatch()
   const { id } = useParams();
 
   const { item } = useSelector((state) => state.Product);
@@ -40,11 +46,26 @@ function ProductDetail() {
       <p className="mt-10">{product.description}</p>
       <div className="flex gap-9 my-20">
       <div className="card-button-div flex gap-5 items-center">
-        <button>-</button>
-        <p>0</p>
-        <button>+</button>
+        <button onClick={()=>{if (qty<=0){
+         return false
+        } else{
+          setQty(qty-1)
+        }{
+          
+        }}}>-</button>
+        <p>{qty}</p>
+        <button  onClick={()=>{setQty(qty+1)}}>+</button>
       </div>
-      <button className="bg-gray-600 text-white py-3 px-4">Add to Cart</button>
+      <button
+  onClick={() => {
+    if (qty > 0) {
+      dispatch(addToCart({ product, quantity: qty }));
+    }
+  }}
+  className="bg-gray-600 text-white py-3 px-4"
+>
+  Add to Cart
+</button>
       </div>
 
     </div>
