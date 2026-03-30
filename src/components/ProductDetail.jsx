@@ -9,7 +9,7 @@ import { addToCart } from "../redux/features/cartSlice";
 
 function ProductDetail() {
 
-  let [qty,setQty] = useState(0)
+ let [qty, setQty] = useState(1);
   const cartItems = useSelector((state) => state.cart.cartItem);
 
 const dispatch = useDispatch()
@@ -56,10 +56,12 @@ const dispatch = useDispatch()
         <p>{qty}</p>
         <button  onClick={()=>{setQty(qty+1)}}>+</button>
       </div>
-      <button
+   <button
   onClick={() => {
     if (qty > 0) {
       dispatch(addToCart({ product, quantity: qty }));
+    } else {
+      alert("Select quantity");
     }
   }}
   className="bg-gray-600 text-white py-3 px-4"
