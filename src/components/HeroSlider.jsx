@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import bannerBackgroundImg1 from "../assets//heroSlides-Image/slider1.jpg"
 import bannerBackgroundImg2 from "../assets//heroSlides-Image/slider2.jpg"
+import { Link } from "react-router-dom";
 const slides = [
   {
     id: 1,
@@ -59,9 +60,11 @@ export default function HeroSlider() {
           </h1>
 
           {/* Button */}
+            <Link to='/shop'>
           <button className="bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200 transition">
             Shop Now
           </button>
+            </Link>
 
         </div>
       </div>

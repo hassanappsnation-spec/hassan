@@ -16,7 +16,7 @@ const CatagoryThembnails = () => {
       bgImage: catagoryThtmtnailBg2,
       link: '/collection'
     }, {
-      title: 'Sunglass',
+      title: 'Sunglass', 
       price: ' $29.00',
       bgImage: catagoryThtmtnailBg3,
       link: '/collection'

@@ -1,39 +1,45 @@
-  import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
- export const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
+// Fetch products from API safely
+export const fetchProducts = createAsyncThunk(
+  "product/fetchProducts",
   async () => {
-    // const res1 = await fetch("https://dummyjson.com/products");
-    // const data1 = await res1.json();
+    const res = await fetch("https://fakestoreapiserver.reactbd.org/api/products");
+    const json = await res.json();
 
-    const res2 = await fetch("https://fakestoreapi.com/products");
-    const data2 = await res2.json();
+    // API direct array return kar sakti hai, ya data array inside object
+    const productsArray = json.data || json; // agar json.data nahi hai to json use karo
 
-    // ✅ Combine both arrays
-  return [
-  // ...data1.products.map(p => ({ ...p, source: "dummy", uid: `dummy-${p.id}` })),
-  ...data2.map(p => ({ ...p, source: "fake", uid: `fake-${p.id}` })),
-];
+    return productsArray.map((p) => ({
+      ...p,
+      uid: `product-${p._id}`, // unique React key
+      slug: p.title?.toLowerCase().replace(/\s+/g, "-") || `${p._id}`, // URL slug
+    }));
   }
 );
 
-  const productSlice = createSlice({
-    name: "product",
-    initialState: {
-      item: [],
-      loading: false,
-    },
-    reducers: {},
-    extraReducers: (builder) => {
-      builder
-        .addCase(fetchProducts.pending, (state) => {
-          state.loading = true;
-        })
-        .addCase(fetchProducts.fulfilled, (state, action) => {
-          state.loading = false;
-          state.item = action.payload;
-        });
-    },
-  });
+const productSlice = createSlice({
+  name: "product",
+  initialState: {
+    items: [],
+    loading: false,
+    status: 'idle',
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchProducts.rejected, (state) => {
+        state.loading = false;
+        state.items = [];
+      });
+  },
+});
 
-  export default productSlice.reducer;
+export default productSlice.reducer;

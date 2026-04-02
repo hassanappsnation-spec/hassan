@@ -43,7 +43,6 @@ const Navbar = () => {
                 <ul className="flex gap-5">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/shop'>Shop</Link></li>
-                    <li><Link to='/collection'>Collection</Link></li>
                     <li><Link to='/contact'>Conatact us</Link></li>
                 </ul>
             </div>
@@ -78,9 +77,7 @@ const Navbar = () => {
   <li>
     <Link to="/shop" className="text-gray-700 hover:text-blue-500 transition">Shop</Link>
   </li>
-  <li>
-    <Link to="/collection" className="text-gray-700 hover:text-blue-500 transition">Collection</Link>
-  </li>
+   
   <li>
     <Link to="/contact" className="text-gray-700 hover:text-blue-500 transition">Contact Us</Link>
   </li>
