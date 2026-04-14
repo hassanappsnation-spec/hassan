@@ -9,17 +9,17 @@ const CatagoryThembnails = () => {
       title: 'Watches',
       price: '$99.00',
       bgImage: catagoryThtmtnailBg1,
-      link: '/collection'
+      link: '/shop'
     }, {
       title: 'Plo Bag',
       price: '$79.00',
       bgImage: catagoryThtmtnailBg2,
-      link: '/collection'
+      link: '/shop'
     }, {
       title: 'Sunglass', 
       price: ' $29.00',
       bgImage: catagoryThtmtnailBg3,
-      link: '/collection'
+      link: '/shop'
     }]
 
   return (

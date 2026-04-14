@@ -13,7 +13,8 @@ export const fetchProducts = createAsyncThunk(
     return productsArray.map((p) => ({
       ...p,
       uid: `product-${p._id}`, // unique React key
-      slug: p.title?.toLowerCase().replace(/\s+/g, "-") || `${p._id}`, // URL slug
+      slug: p.title?.toLowerCase().replace(/\s+/g, "-") || `${p._id}`, // URL slug,
+      
     }));
   }
 );
