@@ -17,7 +17,7 @@ const ProductsCards = () => {
 
     useEffect(() => {
         dispatch(fetchProducts());
-    }, [dispatch, cat]);
+    }, [dispatch]);
 
     if (loading) {
         return (
