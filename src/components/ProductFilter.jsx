@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../redux/features/ProductSlice";
 import { addToCart } from "../redux/features/cartSlice";
@@ -15,7 +15,7 @@ const ProductsCards = () => {
 
     const [cat, setCat] = useState('all')
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         dispatch(fetchProducts());
     }, [dispatch]);
 
@@ -99,7 +99,7 @@ const ProductsCards = () => {
                                         </Link>
 
                                         <button
-                                            onClick={() => dispatch(addToCart({ product, quantity: 1 }))}
+                                            onClick={() => dispatch(addToCart({ ...product, id: product.uid, quantity: 1 }))}
                                             className="bg-white/90 p-3 rounded-full hover:bg-white transition"
                                         >
                                             <FaShoppingCart size={18} />
