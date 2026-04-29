@@ -1,12 +1,19 @@
-import React from 'react'
-import Login from './Login'
+import React, { useState } from 'react';
+import Login from './Login';
+import Dashboard from './Dashboard';
 
 const Profile = () => {
-  return (
-    <div>
-      <Login/>
-    </div>
-  )
-}
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-export default Profile
+  return (
+    <>
+      {isLoggedIn ? (
+        <Dashboard setIsLoggedIn={setIsLoggedIn} />
+      ) : (
+        <Login setIsLoggedIn={setIsLoggedIn} />
+      )}
+    </>
+  );
+};
+
+export default Profile;

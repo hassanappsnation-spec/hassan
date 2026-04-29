@@ -12,6 +12,7 @@ import CheckOut from './pages/CheckOut'
 import ProductDetail from './components/ProductDetail'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import Dashboard from './pages/Dashboard'
 
 const App = () => {
   return (

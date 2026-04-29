@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import {  FaRegHeart, FaCreditCard, FaHamburger,FaTimes  } from "react-icons/fa";
 import { HiOutlineUser,HiOutlineMenu  } from "react-icons/hi";
 import { MdAddShoppingCart } from "react-icons/md";
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [show, setShow] = useState(true); // navbar visible
     const [lastScrollY, setLastScrollY] = useState(0); // last scroll position
+
+  const cartItems = useSelector((state) => state.cart.cartItem);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,9 +39,10 @@ const Navbar = () => {
     } 
     return (
       <>
-        <div className={`hidden md:flex justify-between py-8 px-15 fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-white shadow ${show ? "translate-y-0" : "-translate-y-20"
+        <div className={`hidden md:flex justify-between items-center py-8 px-15 fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-white shadow ${show ? "translate-y-0" : "-translate-y-20"
             }`}>
-            <div className=""><Link>FLONE.</Link></div>
+            <div className="font-semibold  text-3xl underline "><Link to='/'>BuyNest</Link></div>
+
             <div >
                 <ul className="flex gap-5">
                     <li><Link to='/'>Home</Link></li>
@@ -46,18 +50,21 @@ const Navbar = () => {
                     <li><Link to='/contact'>Conatact us</Link></li>
                 </ul>
             </div>
-            <div className="">
+            <div className="mt-2">
                 <ul className="flex gap-5"  >
                     <li> <Link to='/profile'><HiOutlineUser size={24} /></Link></li>
-                    <li><Link to='/cart'><MdAddShoppingCart size={24} /></Link></li>
-                    <li><Link to='/checkout'><FaCreditCard size={24} /></Link></li>
+                    <li className='relative'>
+
+                        <Link className='z-20' to='/cart'><MdAddShoppingCart size={24} /></Link>
+                        <p className='z-10 bg-red-500 text-white text-center rounded-2xl relative bottom-9 left-4'>{cartItems.length}</p>
+                    </li>
                 </ul>
             </div>
         </div>
 
           <div className={`flex md:hidden justify-between py-8 px-15 fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-white shadow ${show ? "translate-y-0" : "-translate-y-20"
             }`}>
-            <Link to='/'><div className="">FLONE.</div></Link>
+            <Link to='/'><div className="font-semibold  text-3xl underline ">BuyNest</div></Link>
           
             <div className="">
                 <ul className="flex gap-5"  >
@@ -82,7 +89,6 @@ const Navbar = () => {
   </li>
     <li> <Link to='/profile'>Profile</Link></li>
                     <li><Link to='/cart'>Add To Cart</Link></li>
-                    <li><Link to='/checkout'>CheckOut</Link></li>
 </ul>
 
             </div>
